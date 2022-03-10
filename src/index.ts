@@ -9,7 +9,6 @@ const bufferToBlurhash = (buffer: Buffer) => (
     sharp(buffer)
       .raw()
       .ensureAlpha()
-      .resize(32, 32, { fit: "inside" })
       .toBuffer((err: Error, buffer: Buffer, { width, height }: {width: number, height: number}) => {
         if (err) return reject(err);
         resolve(encode(new Uint8ClampedArray(buffer), width, height, 4, 4));

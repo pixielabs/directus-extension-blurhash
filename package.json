@@ -7,7 +7,7 @@
 		"directus-custom-hook"
 	],
 	"directus:extension": {
-		"type": "action",
+		"type": "hook",
 		"path": "dist/index.js",
 		"source": "src/index.ts",
 		"host": "^9.6.0"
