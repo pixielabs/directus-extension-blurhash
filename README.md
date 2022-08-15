@@ -34,5 +34,5 @@ project under `./extensions/hooks/blurhash/`.
 # Developing
 
 ```
-npx directus-extension build -o /path/to/de-pury-cms/extensions/hooks/blurhash/index.js  -w
+npx directus-extension build -o /path/to/your/directus/extensions/hooks/blurhash/index.js  -w
 ```
