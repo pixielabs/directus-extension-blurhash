@@ -15,7 +15,6 @@
 	"scripts": {
 		"build": "directus-extension build",
     "dev": "directus-extension build -w --no-minify",
-    "link": "directus-extension link",
     "postinstall": "scripts/postinstall.sh" 
 	},
 	"devDependencies": {
