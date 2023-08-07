@@ -1,3 +1,5 @@
+A Directus extension that generates blurhashes for uploaded images.
+
 Requires Directus 10. May work on Directus 9 with some tweaking, YMMV.
 
 # Setup
