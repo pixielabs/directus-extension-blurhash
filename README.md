@@ -1,3 +1,5 @@
+Requires Directus 10. May work on Directus 9 with some tweaking, YMMV.
+
 # Setup
 
 1. `npm i @pixielabs/directus-extension-blurhash --save`. A post-install script
