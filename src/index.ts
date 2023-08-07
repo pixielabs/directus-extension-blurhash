@@ -1,12 +1,12 @@
 import { defineHook } from '@directus/extensions-sdk';
 import { encode } from 'blurhash';
 
-// External dependency; already included in Directus
-const sharp = require('sharp');
-
 // The more components you have, the more detailed your blurhash. You can
 // play around on https://blurha.sh/ to see how it changes. 4 is the default.
 const BLURHASH_COMPONENTS = 4;
+
+// Sharp is a Directus dependency
+const sharp = require('sharp');
 
 // Convert an image file inside a Buffer into a blurhash string
 const bufferToBlurhash = (buffer: Buffer) => (
@@ -61,7 +61,17 @@ export default defineHook(({ action }, {services, database}) => {
     console.log('[Blurhash] Fetching resized image');
     // Directus will ignore our requests to resize if its not an image. We'll
     // check in a minute.
-    const result = await assetService.getAsset(key, {width: 200, quality: 80});
+    const result = await assetService.getAsset(
+      key,
+      {
+        transformationParams: {
+          key: undefined,
+          withoutEnlargement: true,
+          width: 200,
+          quality: 80
+        }
+      }
+    );
 
     // List of file types from 
     // <https://github.com/directus/directus/blob/main/api/src/services/assets.ts>

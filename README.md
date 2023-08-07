@@ -1,38 +1,28 @@
 # Setup
 
-1. `npm i`
-2. Add a migration to your Directus project:
+1. `npm i @pixielabs/directus-extension-blurhash --save`. A post-install script
+   will add a migration to your `extensions/migrations` folder.
+2. Restart your Directus app if necessary.
 
-    ```
-    // extensions/migrations/xxxxx-add-blurhash.js
-    module.exports = {
-      async up(knex) {
-        await knex.schema.alterTable('directus_files', (table) => {
-          table.text('blurhash');
-        });
-      },
-
-      async down(knex) {
-        await knex.schema.alterTable('directus_files', (table) => {
-          table.dropColumn('blurhash');
-        });
-      },
-    };
-    ```
-
-# Build
+# Development
 
 ```
-npm run build
+$ npm i --ignore-scripts
+$ npm run dev
 ```
 
-# Install
+In another terminal, go to your directus installation and:
 
-Copy the output of `dist/` after running the build command into your Directus
-project under `./extensions/hooks/blurhash/`.
+1. Copy the migration from this folder
+2. Use `wml` to auto-copy changes during dev (a symlink stops Node from 
+   resolving our Sharp dependency).
 
-# Developing
+   ```
+   wml add path/to/@pixielabs/directus-extension-blurhash node_modules/@pixielabs/directus-extension-blurhash
+   # Accept the defaults
+   wml start
+   ```
 
-```
-npx directus-extension build -o /path/to/your/directus/extensions/hooks/blurhash/index.js  -w
-```
+   If `wml start` does nothing, check [this issue for a fix](https://github.com/wix-incubator/wml/issues/48).
+
+2. Start Directus (`npx directus start`)
